@@ -1,0 +1,150 @@
+{
+  "C++ header": {
+    "scope": "cpp",
+    "prefix": "cpp-header",
+    "description": "Create a C++ header file skeleton.",
+    "body": [
+      "#pragma once",
+      "",
+      "namespace ${1:project} {",
+      "",
+      "${0}",
+      "",
+      "} // namespace ${1:project}"
+    ]
+  },
+  "C++ source": {
+    "scope": "cpp",
+    "prefix": "cpp-source",
+    "description": "Create a C++ source file skeleton.",
+    "body": [
+      "#include \"${1:header}.hpp\"",
+      "",
+      "namespace ${2:project} {",
+      "",
+      "${0}",
+      "",
+      "} // namespace ${2:project}"
+    ]
+  },
+  "C++ class": {
+    "scope": "cpp",
+    "prefix": "cpp-class",
+    "description": "Create a small C++ class declaration.",
+    "body": [
+      "class ${1:ClassName} {",
+      "public:",
+      "  ${1:ClassName}() = default;",
+      "  ~${1:ClassName}() = default;",
+      "",
+      "  ${1:ClassName}(const ${1:ClassName}&) = default;",
+      "  ${1:ClassName}& operator=(const ${1:ClassName}&) = default;",
+      "  ${1:ClassName}(${1:ClassName}&&) noexcept = default;",
+      "  ${1:ClassName}& operator=(${1:ClassName}&&) noexcept = default;",
+      "",
+      "  ${0}",
+      "};"
+    ]
+  },
+  "C++ free function": {
+    "scope": "cpp",
+    "prefix": "cpp-fn",
+    "description": "Create a C++ free function skeleton.",
+    "body": [
+      "${1:void} ${2:function_name}(${3}) {",
+      "  ${0}",
+      "}"
+    ]
+  },
+  "GoogleTest test file": {
+    "scope": "cpp",
+    "prefix": "gtest-file",
+    "description": "Create a GoogleTest test file skeleton.",
+    "body": [
+      "#include <gtest/gtest.h>",
+      "",
+      "#include \"${1:module/header}.hpp\"",
+      "",
+      "namespace ${2:project} {",
+      "namespace {",
+      "",
+      "TEST(${3:ComponentTest}, ${4:DoesExpectedThing}) {",
+      "  ${0:EXPECT_TRUE(true);}",
+      "}",
+      "",
+      "} // namespace",
+      "} // namespace ${2:project}"
+    ]
+  },
+  "CMake library target": {
+    "scope": "cmake",
+    "prefix": "cmake-lib",
+    "description": "Create a CMake library target skeleton.",
+    "body": [
+      "add_library(${1:target})",
+      "add_library(${2:project}::${1:target} ALIAS ${1:target})",
+      "",
+      "target_sources(${1:target}",
+      "  PRIVATE",
+      "    ${3:src/file.cpp}",
+      "  PUBLIC",
+      "    FILE_SET HEADERS",
+      "    BASE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include",
+      "    FILES",
+      "      ${4:include/project/file.hpp}",
+      ")",
+      "",
+      "target_compile_features(${1:target} PUBLIC cxx_std_17)",
+      "",
+      "target_include_directories(${1:target}",
+      "  PUBLIC",
+      "    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>",
+      "    $<INSTALL_INTERFACE:include>",
+      ")"
+    ]
+  },
+  "CMake executable target": {
+    "scope": "cmake",
+    "prefix": "cmake-exe",
+    "description": "Create a CMake executable target skeleton.",
+    "body": [
+      "add_executable(${1:app})",
+      "",
+      "target_sources(${1:app}",
+      "  PRIVATE",
+      "    ${2:src/main.cpp}",
+      ")",
+      "",
+      "target_compile_features(${1:app} PRIVATE cxx_std_17)",
+      "",
+      "target_link_libraries(${1:app}",
+      "  PRIVATE",
+      "    ${3:project}::${4:library}",
+      ")"
+    ]
+  },
+  "CMake GoogleTest target": {
+    "scope": "cmake",
+    "prefix": "cmake-gtest",
+    "description": "Create a CMake GoogleTest target skeleton.",
+    "body": [
+      "add_executable(${1:target}_tests)",
+      "",
+      "target_sources(${1:target}_tests",
+      "  PRIVATE",
+      "    ${2:tests/test_file.cpp}",
+      ")",
+      "",
+      "target_compile_features(${1:target}_tests PRIVATE cxx_std_17)",
+      "",
+      "target_link_libraries(${1:target}_tests",
+      "  PRIVATE",
+      "    ${3:project}::${1:target}",
+      "    GTest::gtest_main",
+      ")",
+      "",
+      "include(GoogleTest)",
+      "gtest_discover_tests(${1:target}_tests)"
+    ]
+  }
+}
