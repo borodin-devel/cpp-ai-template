@@ -1,0 +1,56 @@
+# CMake Reference
+
+The build system is centered on `CMakeLists.txt`, `CMakePresets.json`, and focused modules under `cmake/`.
+
+## Targets
+
+- `cpp_ai_template`: main C++17 library.
+- `cpp_ai_template::cpp_ai_template`: public alias for the library.
+- `cpp_ai_template_app`: example executable.
+- `cpp_ai_template_tests`: GoogleTest executable, enabled when `BUILD_TESTING=ON`.
+
+## Presets
+
+Configure/build/test presets:
+
+- `debug`
+- `release`
+- `relwithdebinfo`
+- `asan`
+- `ubsan`
+
+Common commands:
+
+```sh
+cmake --preset debug
+cmake --build --preset debug
+ctest --preset debug
+```
+
+## Modules
+
+- `cmake/ProjectOptions.cmake`: project-wide C++ defaults.
+- `cmake/Dependencies.cmake`: dependency policy, versions, hashes, and FetchContent control.
+- `cmake/GoogleTest.cmake`: GoogleTest resolution.
+- `cmake/Warnings.cmake`: compiler warning options and warnings-as-errors control.
+- `cmake/Sanitizers.cmake`: AddressSanitizer and UndefinedBehaviorSanitizer target options.
+- `cmake/Packaging.cmake`: commented-out install/export/package scaffold.
+- `cmake/cpp_ai_templateConfig.cmake.in`: future package config template.
+
+## Options
+
+- `BUILD_TESTING`: enables test targets through CTest.
+- `CPP_AI_TEMPLATE_ALLOW_FETCHCONTENT`: allows downloading missing dependencies with FetchContent.
+- `CPP_AI_TEMPLATE_GOOGLETEST_VERSION`: selected GoogleTest release version.
+- `CPP_AI_TEMPLATE_GOOGLETEST_SHA256`: expected GoogleTest release archive hash.
+- `CPP_AI_TEMPLATE_WARNINGS_AS_ERRORS`: treats project target warnings as errors.
+- `CPP_AI_TEMPLATE_ENABLE_ASAN`: enables AddressSanitizer for project targets.
+- `CPP_AI_TEMPLATE_ENABLE_UBSAN`: enables UndefinedBehaviorSanitizer for project targets.
+
+## Conventions
+
+- Keep `CMakeLists.txt` readable and target-focused.
+- Put reusable build behavior in `cmake/*.cmake`.
+- Prefer target-local options over global compile flags.
+- Prefer presets over ad hoc configure commands.
+- Keep third-party dependency behavior isolated from project targets.

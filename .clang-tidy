@@ -4,6 +4,7 @@ Checks: >
   bugprone-*,
   performance-*,
   modernize-*,
+  -modernize-use-trailing-return-type,
   readability-*,
   portability-*,
   cppcoreguidelines-avoid-goto,
