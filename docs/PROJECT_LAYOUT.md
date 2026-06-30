@@ -1,15 +1,13 @@
 # Project Layout
 
-This repository is a C++17 template for local AI-assisted development. Prefer reading local files before asking for broad context.
+This file owns repository paths, target names, and naming conventions.
 
-## Where To Look First
+## Entry Points
 
-- `README.md`: project summary and quick-start commands.
+- `README.md`: project purpose, requirements, and quick start.
+- `docs/INDEX.md`: documentation navigation and search instructions.
 - `CMakeLists.txt`: target graph and top-level build behavior.
 - `CMakePresets.json`: supported configure, build, and test presets.
-- `cmake/`: reusable CMake policy modules.
-- `.vscode/README.md`: VS Code workspace conventions.
-- `.clang-format` and `.clang-tidy`: formatting and static-analysis rules.
 
 ## Directories
 
@@ -19,11 +17,13 @@ This repository is a C++17 template for local AI-assisted development. Prefer re
 - `tests/`: GoogleTest-based tests.
 - `cmake/`: focused CMake modules for dependencies, options, warnings, sanitizers, and packaging.
 - `docs/`: human and agent-readable project documentation.
+- `.agents/`: local multiagent roles, templates, handoffs, and helper scripts.
+- `.codex/`: Codex MCP configuration only.
+- `docs/TOOL_RULES/`: callable-program rules for Git, CMake, CTest, formatters, linters, and helper scripts.
+- `.codex/README.md`: Codex-specific Markdown guidance.
 - `.vscode/`: portable VS Code workspace defaults.
-- `.agents/`: reserved for local multiagent role definitions and workflows.
-- `.codex/`: reserved for local Codex-specific guidance and assets.
 
-## Naming
+## Names
 
 - CMake project: `cpp_ai_template`.
 - Main library target: `cpp_ai_template`.
@@ -35,9 +35,6 @@ This repository is a C++17 template for local AI-assisted development. Prefer re
 - Source files: `src/*.cpp`.
 - Test files: `tests/*_test.cpp`.
 
-## Conventions
+## Layout Rules
 
-- Keep reusable build behavior in `cmake/*.cmake` instead of expanding `CMakeLists.txt`.
-- Keep generated files under `build/` or another ignored build directory.
-- Keep AI-agent behavior in repository files such as `.agents/`, `.codex/`, and `docs/`, not in editor-specific integration.
-- Prefer CMake presets over ad hoc configure/build commands.
+Shared layout, generated-file, agent-file, and editor-file rules live in `docs/CONVENTIONS.md`.

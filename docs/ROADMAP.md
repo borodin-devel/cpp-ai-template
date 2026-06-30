@@ -8,8 +8,8 @@ This file records intentional direction and deferred work for the template.
 - CMake presets for debug, release, relwithdebinfo, ASAN, and UBSAN.
 - Local formatting, linting, validation, sanitizer, bootstrap, and clean scripts.
 - VS Code workspace defaults without AI-agent behavior.
-- Lightweight `.agents/` roles and `.codex/` command/checklist guidance.
-- Short documentation for layout, CMake, dependencies, validation, testing, style, review, troubleshooting, AI workflow, and Git.
+- Lightweight `.agents/` roles, `.codex/config.toml` MCP configuration, and Codex guidance in `.codex/README.md`.
+- Short documentation for layout, conventions, commands, CMake, dependencies, validation, testing, review, troubleshooting, AI workflow, and Git.
 
 ## Deferred
 

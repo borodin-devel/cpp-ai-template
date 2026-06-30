@@ -19,13 +19,7 @@ Configure/build/test presets:
 - `asan`
 - `ubsan`
 
-Common commands:
-
-```sh
-cmake --preset debug
-cmake --build --preset debug
-ctest --preset debug
-```
+Common preset commands are in `docs/TOOL_RULES/README.md`.
 
 ## Modules
 
@@ -51,8 +45,4 @@ ctest --preset debug
 
 ## Conventions
 
-- Keep `CMakeLists.txt` readable and target-focused.
-- Put reusable build behavior in `cmake/*.cmake`.
-- Prefer target-local options over global compile flags.
-- Prefer presets over ad hoc configure commands.
-- Keep third-party dependency behavior isolated from project targets.
+Shared CMake conventions live in `docs/CONVENTIONS.md`. Dependency details live in `docs/DEPENDENCIES.md`.

@@ -1,64 +1,18 @@
 # Validation
 
-Use the smallest validation level that proves the change. Broaden validation when a change touches shared behavior, build logic, dependencies, or tests.
+Use the smallest validation level that proves the change. Broaden validation when a change touches shared behavior, build logic, dependencies, target wiring, tests, or low-level code.
+
+Commands and helper-script descriptions live in `docs/TOOL_RULES/README.md`.
 
 ## Levels
 
-### Syntax
+- Syntax: file-format-only changes, such as JSON or Markdown structure checks.
+- Configure: CMake, dependency, preset, or toolchain changes.
+- Build: source, header, CMake, or warning-policy changes.
+- Test: behavior, tests, dependencies, or target wiring changes.
+- Sanitizers: memory-safety, undefined-behavior, ownership, or other low-level changes.
 
-Use for file-format-only changes.
-
-```sh
-python3 -m json.tool CMakePresets.json
-```
-
-### Configure
-
-Use after CMake, dependency, preset, or toolchain changes.
-
-```sh
-cmake --preset debug
-```
-
-### Build
-
-Use after source, header, CMake, or warning-policy changes.
-
-```sh
-cmake --build --preset debug
-```
-
-### Test
-
-Use after behavior, tests, dependencies, or target wiring changes.
-
-```sh
-ctest --preset debug
-```
-
-### Sanitizers
-
-Use when memory safety, undefined behavior, ownership, or low-level code changes.
-
-```sh
-cmake --preset asan
-cmake --build --preset asan
-ctest --preset asan
-```
-
-```sh
-cmake --preset ubsan
-cmake --build --preset ubsan
-ctest --preset ubsan
-```
-
-Agent helper:
-
-```sh
-.agents/scripts/sanitize.sh
-```
-
-## Common Full Check
+## Recommended Commands
 
 ```sh
 cmake --preset debug
@@ -66,34 +20,18 @@ cmake --build --preset debug
 ctest --preset debug
 ```
 
-Agent helper:
+For all standard local checks:
 
 ```sh
 .agents/scripts/check.sh
 ```
 
-Bootstrap after clone or clean:
+For sanitizer validation:
 
 ```sh
-.agents/scripts/bootstrap.sh
+.agents/scripts/sanitize.sh
 ```
 
-## Formatting
+## Failure Classification
 
-```sh
-.agents/scripts/format.sh
-```
-
-## Static Analysis
-
-```sh
-.agents/scripts/lint.sh
-```
-
-## Failure Interpretation
-
-- Missing tools such as `cmake`, `ninja`, `clang-format`, or `clang-tidy` are environment failures.
-- Dependency download failures are network/dependency failures unless a CMake change caused the wrong URL, version, or hash.
-- Failures under `build/*/_deps/` usually belong to third-party dependency resolution.
-- Project target failures usually mention `cpp_ai_template`, `cpp_ai_template_app`, or `cpp_ai_template_tests`.
-- If configure and build run at the same time against one build directory, rerun sequentially before treating the result as a project failure.
+Use `docs/TOOL_RULES/README.md` for shared failure notes and `docs/TROUBLESHOOTING.md` for detailed diagnosis.
