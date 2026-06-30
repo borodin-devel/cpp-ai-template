@@ -85,3 +85,9 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
+
+# Serena local runtime state
+.serena/
+
+# CocoIndex local runtime state
+.cocoindex_code/

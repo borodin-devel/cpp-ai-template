@@ -1,0 +1,37 @@
+[mcp_servers.serena]
+command = "/home/bsa/.local/share/uv/tools/serena-agent/bin/serena"
+args = ["start-mcp-server", "--context", "codex", "--project-from-cwd"]
+cwd = "/home/bsa/cpp-ai-template"
+
+[mcp_servers.cocoindex]
+command = "/home/bsa/.local/share/uv/tools/cocoindex-code/bin/cocoindex-code"
+args = ["serve"]
+cwd = "/home/bsa/cpp-ai-template"
+
+[mcp_servers.cocoindex.env]
+COCOINDEX_CODE_DIR = "/home/bsa/cpp-ai-template/.cocoindex_code"
+
+[[hooks.SessionStart]]
+matcher = "startup|resume|clear|compact"
+
+[[hooks.SessionStart.hooks]]
+type = "command"
+command = "SERENA_HOME=/home/bsa/cpp-ai-template/.serena /home/bsa/.local/share/uv/tools/serena-agent/bin/serena-hooks activate --client codex"
+timeout = 10
+statusMessage = "Loading Serena project reminder"
+
+[[hooks.PreToolUse]]
+matcher = "*"
+
+[[hooks.PreToolUse.hooks]]
+type = "command"
+command = "SERENA_HOME=/home/bsa/cpp-ai-template/.serena /home/bsa/.local/share/uv/tools/serena-agent/bin/serena-hooks remind --client codex"
+timeout = 10
+statusMessage = "Checking Serena symbolic-tool guidance"
+
+[[hooks.Stop]]
+
+[[hooks.Stop.hooks]]
+type = "command"
+command = "SERENA_HOME=/home/bsa/cpp-ai-template/.serena /home/bsa/.local/share/uv/tools/serena-agent/bin/serena-hooks cleanup --client codex"
+timeout = 10
