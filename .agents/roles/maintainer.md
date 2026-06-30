@@ -16,7 +16,7 @@ Own build-system health, dependency policy, presets, packaging, warnings, saniti
 ## Checklist
 
 - Keep top-level CMake concise and delegate reusable logic to `cmake/`.
-- Prefer system dependencies with controlled FetchContent fallback.
+- Keep auto-detect as the default dependency path and preserve package-only and FetchContent modes.
 - Keep presets aligned with documented commands.
 - Validate configure, build, and tests after build-system changes.
 

@@ -41,7 +41,6 @@ printf -- '- `%s`\n' "build/debug/compile_commands.json"
 
 print_tracked "Project Entry Points" \
   README.md \
-  CONTRIBUTING.md \
   CMakeLists.txt \
   CMakePresets.json
 

@@ -1,5 +1,4 @@
 {
-  "cmake.buildDirectory": "${workspaceFolder}/build/${buildType}",
   "cmake.configureOnOpen": true,
   "cmake.useCMakePresets": "auto",
   "C_Cpp.default.cppStandard": "c++17",
@@ -7,7 +6,7 @@
   "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
   "C_Cpp.intelliSenseEngine": "disabled",
   "clangd.arguments": [
-    "--compile-commands-dir=${workspaceFolder}/build/Debug",
+    "--compile-commands-dir=${workspaceFolder}/build/debug",
     "--clang-tidy",
     "--header-insertion=never",
     "--completion-style=detailed"

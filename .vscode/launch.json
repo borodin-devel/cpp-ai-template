@@ -31,7 +31,7 @@
       "name": "Debug app (LLDB fallback)",
       "type": "lldb",
       "request": "launch",
-      "program": "${workspaceFolder}/build/Debug/app",
+      "program": "${workspaceFolder}/build/debug/cpp_ai_template_app",
       "args": [],
       "cwd": "${workspaceFolder}",
       "stopOnEntry": false
@@ -40,7 +40,7 @@
       "name": "Debug app (GDB fallback)",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/build/Debug/app",
+      "program": "${workspaceFolder}/build/debug/cpp_ai_template_app",
       "args": [],
       "cwd": "${workspaceFolder}",
       "stopAtEntry": false,

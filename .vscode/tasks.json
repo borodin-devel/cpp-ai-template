@@ -2,60 +2,35 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "cmake: configure Debug",
+      "label": "cmake: configure debug",
       "type": "shell",
       "command": "cmake",
-      "args": [
-        "-S",
-        ".",
-        "-B",
-        "build/Debug",
-        "-DCMAKE_BUILD_TYPE=Debug",
-        "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
-      ],
+      "args": ["--preset", "debug"],
       "group": "build",
       "problemMatcher": []
     },
     {
-      "label": "cmake: configure Release",
+      "label": "cmake: configure release",
       "type": "shell",
       "command": "cmake",
-      "args": [
-        "-S",
-        ".",
-        "-B",
-        "build/Release",
-        "-DCMAKE_BUILD_TYPE=Release",
-        "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
-      ],
+      "args": ["--preset", "release"],
       "group": "build",
       "problemMatcher": []
     },
     {
-      "label": "cmake: configure RelWithDebInfo",
+      "label": "cmake: configure relwithdebinfo",
       "type": "shell",
       "command": "cmake",
-      "args": [
-        "-S",
-        ".",
-        "-B",
-        "build/RelWithDebInfo",
-        "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
-        "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
-      ],
+      "args": ["--preset", "relwithdebinfo"],
       "group": "build",
       "problemMatcher": []
     },
     {
-      "label": "cmake: build Debug",
+      "label": "cmake: build debug",
       "type": "shell",
       "command": "cmake",
-      "args": [
-        "--build",
-        "build/Debug",
-        "--parallel"
-      ],
-      "dependsOn": "cmake: configure Debug",
+      "args": ["--build", "--preset", "debug"],
+      "dependsOn": "cmake: configure debug",
       "group": {
         "kind": "build",
         "isDefault": true
@@ -63,78 +38,59 @@
       "problemMatcher": "$gcc"
     },
     {
-      "label": "cmake: build Release",
+      "label": "cmake: build release",
       "type": "shell",
       "command": "cmake",
-      "args": [
-        "--build",
-        "build/Release",
-        "--parallel"
-      ],
-      "dependsOn": "cmake: configure Release",
+      "args": ["--build", "--preset", "release"],
+      "dependsOn": "cmake: configure release",
       "group": "build",
       "problemMatcher": "$gcc"
     },
     {
-      "label": "cmake: build RelWithDebInfo",
+      "label": "cmake: build relwithdebinfo",
       "type": "shell",
       "command": "cmake",
-      "args": [
-        "--build",
-        "build/RelWithDebInfo",
-        "--parallel"
-      ],
-      "dependsOn": "cmake: configure RelWithDebInfo",
+      "args": ["--build", "--preset", "relwithdebinfo"],
+      "dependsOn": "cmake: configure relwithdebinfo",
       "group": "build",
       "problemMatcher": "$gcc"
     },
     {
-      "label": "ctest: Debug",
+      "label": "ctest: debug",
       "type": "shell",
       "command": "ctest",
-      "args": [
-        "--test-dir",
-        "build/Debug",
-        "--output-on-failure"
-      ],
-      "dependsOn": "cmake: build Debug",
+      "args": ["--preset", "debug"],
+      "dependsOn": "cmake: build debug",
       "group": "test",
       "problemMatcher": []
     },
     {
-      "label": "ctest: Release",
+      "label": "ctest: release",
       "type": "shell",
       "command": "ctest",
-      "args": [
-        "--test-dir",
-        "build/Release",
-        "--output-on-failure"
-      ],
-      "dependsOn": "cmake: build Release",
+      "args": ["--preset", "release"],
+      "dependsOn": "cmake: build release",
       "group": "test",
       "problemMatcher": []
     },
     {
       "label": "format: clang-format",
       "type": "shell",
-      "command": "bash",
-      "args": [
-        "-lc",
-        "for dir in include src tests examples; do [ -d \"$dir\" ] && find \"$dir\" -type f \\( -name '*.c' -o -name '*.cc' -o -name '*.cpp' -o -name '*.cxx' -o -name '*.h' -o -name '*.hh' -o -name '*.hpp' -o -name '*.hxx' -o -name '*.ipp' -o -name '*.tpp' \\); done | xargs -r clang-format -i"
-      ],
+      "command": ".agents/scripts/format.sh",
       "group": "build",
       "problemMatcher": []
     },
     {
-      "label": "clean: build",
+      "label": "lint: clang-tidy",
       "type": "shell",
-      "command": "cmake",
-      "args": [
-        "-E",
-        "rm",
-        "-rf",
-        "build"
-      ],
+      "command": ".agents/scripts/lint.sh",
+      "group": "build",
+      "problemMatcher": "$gcc"
+    },
+    {
+      "label": "clean: generated files",
+      "type": "shell",
+      "command": ".agents/scripts/clean.sh",
       "problemMatcher": []
     }
   ]

@@ -35,12 +35,14 @@ ctest --preset debug
 - `cmake/Warnings.cmake`: compiler warning options and warnings-as-errors control.
 - `cmake/Sanitizers.cmake`: AddressSanitizer and UndefinedBehaviorSanitizer target options.
 - `cmake/Packaging.cmake`: commented-out install/export/package scaffold.
+- `cmake/version_config.hpp.in`: generated C++ version header template sourced from `project(VERSION ...)`.
 - `cmake/cpp_ai_templateConfig.cmake.in`: future package config template.
 
 ## Options
 
 - `BUILD_TESTING`: enables test targets through CTest.
-- `CPP_AI_TEMPLATE_ALLOW_FETCHCONTENT`: allows downloading missing dependencies with FetchContent.
+- `CPP_AI_TEMPLATE_GOOGLETEST_PROVIDER`: selects `fetchcontent`, `package`, or `auto` dependency resolution.
+- `CPP_AI_TEMPLATE_ALLOW_FETCHCONTENT`: enables or disables all FetchContent dependency paths.
 - `CPP_AI_TEMPLATE_GOOGLETEST_VERSION`: selected GoogleTest release version.
 - `CPP_AI_TEMPLATE_GOOGLETEST_SHA256`: expected GoogleTest release archive hash.
 - `CPP_AI_TEMPLATE_WARNINGS_AS_ERRORS`: treats project target warnings as errors.

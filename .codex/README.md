@@ -36,13 +36,13 @@ ctest --preset debug
 For C++ formatting:
 
 ```sh
-clang-format -i include/cpp_ai_template/*.hpp src/*.cpp examples/app/*.cpp tests/*.cpp
+.agents/scripts/format.sh
 ```
 
 For static analysis:
 
 ```sh
-clang-tidy src/version.cpp -- -Iinclude -std=c++17
+.agents/scripts/lint.sh
 ```
 
 ## Constraints

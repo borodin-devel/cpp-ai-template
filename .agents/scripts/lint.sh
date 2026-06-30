@@ -8,9 +8,7 @@ cd "$repo_root"
 
 command -v clang-tidy >/dev/null 2>&1
 
-if [ ! -f build/debug/compile_commands.json ]; then
-  cmake --preset debug
-fi
+cmake --preset debug
 
 git ls-files \
   '*.cc' \

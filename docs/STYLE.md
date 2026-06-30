@@ -19,7 +19,7 @@ Current defaults:
 Format changed C++ files with:
 
 ```sh
-clang-format -i include/cpp_ai_template/*.hpp src/*.cpp examples/app/*.cpp tests/*.cpp
+.agents/scripts/format.sh
 ```
 
 ## C++ Naming

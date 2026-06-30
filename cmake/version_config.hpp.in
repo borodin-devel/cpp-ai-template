@@ -1,0 +1,3 @@
+#pragma once
+
+#define CPP_AI_TEMPLATE_PROJECT_VERSION "@PROJECT_VERSION@"

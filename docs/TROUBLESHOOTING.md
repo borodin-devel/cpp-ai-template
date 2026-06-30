@@ -35,6 +35,12 @@ The presets intentionally use Ninja. Do not change presets based only on one mac
 
 ## GoogleTest Download Fails
 
+Check dependency visibility first:
+
+```sh
+.agents/scripts/deps.sh
+```
+
 Check:
 
 ```sh
@@ -54,7 +60,7 @@ Dependency policy is documented in `docs/DEPENDENCIES.md`.
 Require system GoogleTest:
 
 ```sh
-cmake --preset debug -DCPP_AI_TEMPLATE_ALLOW_FETCHCONTENT=OFF
+cmake --preset debug -DCPP_AI_TEMPLATE_GOOGLETEST_PROVIDER=package
 ```
 
 If GoogleTest is not installed, configure should fail with a dependency error.
@@ -62,7 +68,13 @@ If GoogleTest is not installed, configure should fail with a dependency error.
 Restore default fetch behavior:
 
 ```sh
-cmake --preset debug -DCPP_AI_TEMPLATE_ALLOW_FETCHCONTENT=ON
+cmake --preset debug -DCPP_AI_TEMPLATE_GOOGLETEST_PROVIDER=auto -DCPP_AI_TEMPLATE_ALLOW_FETCHCONTENT=ON
+```
+
+Force the pinned FetchContent archive:
+
+```sh
+cmake --preset debug -DCPP_AI_TEMPLATE_GOOGLETEST_PROVIDER=fetchcontent
 ```
 
 ## No Tests Discovered

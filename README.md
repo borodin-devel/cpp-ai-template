@@ -40,19 +40,66 @@ cmake --preset ubsan
 Format C++ files:
 
 ```sh
-clang-format -i include/cpp_ai_template/*.hpp src/*.cpp examples/app/*.cpp tests/*.cpp
+.agents/scripts/format.sh
 ```
 
 Run static analysis after configuring:
 
 ```sh
-clang-tidy src/version.cpp -- -Iinclude -std=c++17
+.agents/scripts/lint.sh
 ```
 
 ## Layout
 
 See `docs/PROJECT_LAYOUT.md` for the repository structure, naming conventions, and where agents should look first.
 
+For contribution workflow, validation, style, review, dependency, and troubleshooting guidance, see `docs/`.
+
 ## AI-Assisted Workflow
 
 AI-agent behavior should live in repository-owned files such as `.agents/`, `.codex/`, and `docs/`. Editor files under `.vscode/` are limited to portable workspace defaults.
+
+### Serena And CocoIndex For Codex
+
+This repo includes project-scoped Codex MCP configuration for:
+
+- Serena: semantic code navigation and symbolic editing tools.
+- CocoIndex: codebase indexing and natural-language code search.
+
+Install both tools with UV:
+
+```sh
+uv tool install serena-agent
+uv tool install cocoindex-code
+```
+
+Verify the installed entrypoints:
+
+```sh
+serena --version
+cocoindex-code --help
+```
+
+The project wiring lives in `.codex/config.toml`. It starts Serena with the Codex context and project auto-detection, starts CocoIndex with `cocoindex-code serve`, and enables Serena hooks that remind Codex to activate the project and use Serena symbolic tools before overusing raw file reads or grep.
+
+If your UV tool directory is not under `~/.local/share/uv/tools/`, update the `command` paths in `.codex/config.toml` to match:
+
+```sh
+uv tool dir
+```
+
+Use with Codex:
+
+```sh
+codex mcp list
+```
+
+Expected: `serena` and `cocoindex` are listed as enabled for this trusted project. Restart the Codex session after changing MCP config.
+
+CocoIndex keeps local runtime and index files in `.cocoindex_code/`, which is ignored by Git. To prebuild or refresh the local index outside Codex:
+
+```sh
+cocoindex-code index
+```
+
+Serena keeps local hook/session state in `.serena/`, also ignored by Git. In a Codex session, follow the Serena startup reminder: activate the project and read Serena's instructions before doing code exploration.

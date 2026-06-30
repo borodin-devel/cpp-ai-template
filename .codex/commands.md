@@ -46,15 +46,15 @@ Failure notes:
 ./build/debug/cpp_ai_template_app
 ```
 
-Expected: prints `cpp_ai_template 0.1.0`.
+Expected: prints `cpp_ai_template <project version>`.
 
 ## Format
 
 ```sh
-clang-format -i include/cpp_ai_template/*.hpp src/*.cpp examples/app/*.cpp tests/*.cpp
+.agents/scripts/format.sh
 ```
 
-Expected: C++ files are formatted according to `.clang-format`.
+Expected: tracked C++ files are formatted according to `.clang-format`.
 
 Failure notes:
 
@@ -63,10 +63,10 @@ Failure notes:
 ## Static Analysis
 
 ```sh
-clang-tidy src/version.cpp -- -Iinclude -std=c++17
+.agents/scripts/lint.sh
 ```
 
-Expected: clang-tidy runs with repository `.clang-tidy` defaults.
+Expected: clang-tidy runs over tracked C++ source files with repository `.clang-tidy` defaults.
 
 Failure notes:
 
@@ -80,6 +80,14 @@ cmake --list-presets
 ```
 
 Expected: lists `debug`, `release`, `relwithdebinfo`, `asan`, and `ubsan`.
+
+## Dependency Check
+
+```sh
+.agents/scripts/deps.sh
+```
+
+Expected: prints tool versions, reports whether system GoogleTest is available, and lists supported GoogleTest providers.
 
 ## Agent Scripts
 
@@ -123,6 +131,12 @@ Run sanitizer validation:
 
 ```sh
 .agents/scripts/sanitize.sh
+```
+
+Check local dependency availability:
+
+```sh
+.agents/scripts/deps.sh
 ```
 
 Remove generated build directories:

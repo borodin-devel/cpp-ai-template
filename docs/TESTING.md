@@ -22,7 +22,7 @@ Example:
 #include <gtest/gtest.h>
 
 TEST(VersionTest, ReturnsProjectVersion) {
-  EXPECT_EQ(cpp_ai_template::version(), "0.1.0");
+  EXPECT_FALSE(cpp_ai_template::version().empty());
 }
 ```
 
