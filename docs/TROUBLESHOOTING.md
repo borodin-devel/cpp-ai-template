@@ -4,17 +4,7 @@ Use this guide to classify common local failures before changing project files.
 
 ## Missing Tool
 
-Check tools:
-
-```sh
-cmake --version
-ninja --version
-c++ --version
-clang-format --version
-clang-tidy --version
-```
-
-If a command is missing, treat it as an environment issue.
+Use the tool and helper commands in `docs/TOOL_RULES/README.md`. If a required command is missing, treat it as an environment issue.
 
 ## Ninja Preset Fails
 
@@ -65,17 +55,7 @@ cmake --preset debug -DCPP_AI_TEMPLATE_GOOGLETEST_PROVIDER=package
 
 If GoogleTest is not installed, configure should fail with a dependency error.
 
-Restore default fetch behavior:
-
-```sh
-cmake --preset debug -DCPP_AI_TEMPLATE_GOOGLETEST_PROVIDER=auto -DCPP_AI_TEMPLATE_ALLOW_FETCHCONTENT=ON
-```
-
-Force the pinned FetchContent archive:
-
-```sh
-cmake --preset debug -DCPP_AI_TEMPLATE_GOOGLETEST_PROVIDER=fetchcontent
-```
+Restore default fetch behavior or force FetchContent using the provider commands in `docs/DEPENDENCIES.md`.
 
 ## No Tests Discovered
 

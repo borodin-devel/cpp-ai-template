@@ -1,53 +1,16 @@
-# Codex Guidance
+# Codex Rules
 
-Use repository files as the primary context source. Prefer reading focused local files and running local commands over asking for broad prompt context.
+This file is the only Codex-specific Markdown file. Keep tool-neutral project rules in `AGENTS.md` or `docs/`, and keep callable-program rules in `docs/TOOL_RULES/`.
 
-## Read First
+## MCP Configuration
 
-- `README.md`
-- `docs/PROJECT_LAYOUT.md`
-- `CMakePresets.json`
-- `CMakeLists.txt`
-- Relevant files under `cmake/`, `include/`, `src/`, `tests/`, or `docs/`
+- Codex MCP configuration lives in `.codex/config.toml`.
+- Serena is configured for semantic code navigation and symbolic editing.
+- CocoIndex is configured for codebase indexing and natural-language code search.
 
-## Role Guidance
+## Codex Workflow
 
-Use `.agents/roles/*.md` for role-specific behavior:
-
-- `architect.md`: scope and sequencing
-- `developer.md`: implementation
-- `tester.md`: validation
-- `maintainer.md`: build system and tooling
-- `reviewer.md`: review
-- `documenter.md`: documentation
-
-## Validation Preference
-
-Prefer the smallest command that proves the change, then broaden when risk justifies it.
-
-Common commands:
-
-```sh
-cmake --preset debug
-cmake --build --preset debug
-ctest --preset debug
-```
-
-For C++ formatting:
-
-```sh
-.agents/scripts/format.sh
-```
-
-For static analysis:
-
-```sh
-.agents/scripts/lint.sh
-```
-
-## Constraints
-
-- Do not modify files based only on locally installed VS Code extensions.
-- Keep AI-agent behavior out of `.vscode/`.
-- Prefer CMake presets over ad hoc build commands.
-- Keep changes scoped to the requested behavior.
+- Follow `AGENTS.md` for repository-wide agent rules and reading order.
+- Prefer focused local files and targeted `rg` searches before broad context requests.
+- Use Serena and CocoIndex when available; fall back to local files and `rg` when they are unavailable.
+- Mention MCP limitations in final responses only when they affect confidence.

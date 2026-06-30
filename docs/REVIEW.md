@@ -15,8 +15,8 @@ Use reviews to find correctness, maintainability, validation, and documentation 
 - Check behavior changes against tests.
 - Check CMake changes against `docs/CMAKE.md` and `docs/VALIDATION.md`.
 - Check dependency changes against `docs/DEPENDENCIES.md`.
-- Check style-sensitive changes against `docs/STYLE.md`.
-- Check agent guidance changes against `.agents/`, `.codex/`, and `docs/AI_WORKFLOW.md`.
+- Check style-sensitive changes against `docs/CONVENTIONS.md`.
+- Check agent guidance changes against `.agents/`, `.codex/config.toml`, `.codex/`, and `docs/AI_WORKFLOW.md`.
 - Confirm generated files remain ignored.
 - Confirm `.vscode/` remains portable and editor-focused.
 

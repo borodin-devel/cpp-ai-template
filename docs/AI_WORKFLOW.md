@@ -1,6 +1,6 @@
 # AI Workflow
 
-Use local files as shared memory. Keep prompts short by writing reusable context into `.agents/`, `.codex/`, and `docs/`.
+Use local repository files as shared memory. Keep prompts short by writing durable context into the owning documents listed in `docs/INDEX.md`.
 
 ## Default Role Sequence
 
@@ -16,39 +16,16 @@ Use `maintainer` when the task touches CMake, dependencies, presets, warnings, s
 
 ## Handoffs
 
-For non-trivial work, write a handoff using `.agents/HANDOFF_TEMPLATE.md`.
+For reusable non-trivial handoffs, use `.agents/HANDOFF_TEMPLATE.md` and record scope, files, commands, result, and next action.
 
-Handoffs should record:
+## Context And Search
 
-- scope
-- files read or changed
-- commands run
-- result
-- next action
-
-## Token-Saving Rules
-
-- Read `README.md`, `docs/PROJECT_LAYOUT.md`, and relevant local files before asking for broad context.
-- Use `.codex/commands.md` for verified commands.
-- Use `.codex/checklists.md` for task-specific checks.
-- Prefer command output and file references over prose summaries.
-- Keep role files and handoffs short.
-- Do not duplicate long guidance across multiple files.
-
-## Validation
-
-Choose validation from `docs/VALIDATION.md`.
-
-Default full check:
-
-```sh
-cmake --preset debug
-cmake --build --preset debug
-ctest --preset debug
-```
+- Start with `docs/INDEX.md` and the topic owner instead of reading every Markdown file.
+- Use `docs/TOOL_RULES/README.md` for verified commands.
+- Use `docs/VALIDATION.md` for validation scope.
+- Prefer targeted `rg` searches from `docs/INDEX.md` over broad recursive scans.
+- Do not duplicate long guidance across role files, Codex files, and docs.
 
 ## Boundaries
 
-- AI-agent behavior belongs in `.agents/`, `.codex/`, and `docs/`.
-- `.vscode/` is for portable editor defaults only.
-- Do not modify files based only on locally installed VS Code extensions.
+Follow `docs/CONVENTIONS.md` for agent-file, editor-file, generated-file, documentation, CMake, dependency, and layout boundaries.

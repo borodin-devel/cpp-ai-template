@@ -4,11 +4,7 @@ Tests use GoogleTest and CTest. Test files live under `tests/` and are built int
 
 ## Run Tests
 
-```sh
-cmake --preset debug
-cmake --build --preset debug
-ctest --preset debug
-```
+Use the debug configure, build, and test commands from `docs/TOOL_RULES/README.md`.
 
 ## Add A Test
 
@@ -47,19 +43,7 @@ CTest discovers GoogleTest cases from the built test executable.
 
 ## Sanitizer Tests
 
-Use sanitizer presets for memory-safety and undefined-behavior-sensitive changes:
-
-```sh
-cmake --preset asan
-cmake --build --preset asan
-ctest --preset asan
-```
-
-```sh
-cmake --preset ubsan
-cmake --build --preset ubsan
-ctest --preset ubsan
-```
+Use `docs/VALIDATION.md` and `docs/TOOL_RULES/README.md` for sanitizer validation commands.
 
 ## Failure Notes
 

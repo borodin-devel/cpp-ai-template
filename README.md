@@ -51,13 +51,11 @@ Run static analysis after configuring:
 
 ## Layout
 
-See `docs/PROJECT_LAYOUT.md` for the repository structure, naming conventions, and where agents should look first.
-
-For contribution workflow, validation, style, review, dependency, and troubleshooting guidance, see `docs/`.
+See `docs/INDEX.md` for documentation navigation and `docs/PROJECT_LAYOUT.md` for repository structure, target names, and naming conventions.
 
 ## AI-Assisted Workflow
 
-AI-agent behavior should live in repository-owned files such as `.agents/`, `.codex/`, and `docs/`. Editor files under `.vscode/` are limited to portable workspace defaults.
+AI-agent and editor boundaries are defined in `docs/CONVENTIONS.md`.
 
 ### Serena And CocoIndex For Codex
 

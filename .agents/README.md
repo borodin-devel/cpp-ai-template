@@ -1,17 +1,23 @@
 # Agent Roles
 
-This directory is reserved for lightweight multiagent role cards and shared workflow notes.
+This directory contains lightweight role cards, templates, and helper scripts for local multiagent workflows.
 
-Agents should prefer repository files, checklists, command output, and small written handoffs over long chat context. Role files should stay short and operational.
+## Topic Ownership
+
+- Repository-wide rules: `AGENTS.md`.
+- Documentation navigation and search: `docs/INDEX.md`.
+- Shared layout, CMake, dependency, generated-file, editor, and documentation conventions: `docs/CONVENTIONS.md`.
+- Role sequencing and handoffs: `docs/AI_WORKFLOW.md`.
+- Commands and validation: `docs/TOOL_RULES/README.md` and `docs/VALIDATION.md`.
 
 ## Roles
 
-- `architect`: orchestrates scope, boundaries, sequencing, and tradeoffs.
-- `developer`: implements focused code changes that match the existing project style.
-- `tester`: designs and runs local validation, regression checks, and failure reproduction.
-- `maintainer`: owns build-system health, dependency policy, presets, packaging, and tooling.
-- `reviewer`: reviews changes for correctness, maintainability, risks, and missing tests.
-- `documenter`: keeps user-facing and agent-facing documentation accurate and concise.
+- `architect`: scope, sequencing, boundaries, and tradeoffs.
+- `developer`: focused source, test, CMake, or documentation changes.
+- `tester`: local validation, regression checks, and failure reproduction.
+- `maintainer`: build system, dependency policy, presets, packaging, and tooling.
+- `reviewer`: correctness, maintainability, risks, and missing tests.
+- `documenter`: concise human-facing and agent-facing documentation.
 
 ## Role Card Format
 
@@ -21,26 +27,9 @@ Each role card should use this structure:
 # Role Name
 
 ## Purpose
-
-One short paragraph describing what this role owns.
-
 ## Inputs
-
-- Files, commands, or reports this role should inspect first.
-
 ## Checklist
-
-- Concrete checks this role performs before handing off.
-
 ## Handoff
-
-- What this role should write down for the next role.
 ```
 
-## Coordination Rules
-
-- Read `docs/PROJECT_LAYOUT.md` before making broad repository changes.
-- Prefer CMake presets over ad hoc build commands.
-- Keep handoffs in files when the information will be reused.
-- Do not encode AI-agent behavior in `.vscode/`.
-- Keep role guidance small enough to read quickly.
+Keep role cards short. Put reusable cross-cutting rules in the owning document from `docs/INDEX.md` instead of repeating them here.
