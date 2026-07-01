@@ -15,7 +15,12 @@ print_tracked() {
   shift
 
   printf '\n## %s\n\n' "$title"
-  git ls-files --cached --others --exclude-standard "$@" | sed 's/^/- /'
+  git ls-files --cached --others --exclude-standard "$@" |
+    while IFS= read -r path; do
+      if [ -e "$path" ]; then
+        printf -- '- %s\n' "$path"
+      fi
+    done
 }
 
 printf '# Repository Context\n'
@@ -41,6 +46,7 @@ printf -- '- `%s`\n' "build/debug/compile_commands.json"
 
 print_tracked "Project Entry Points" \
   README.md \
+  AGENTS.md \
   CMakeLists.txt \
   CMakePresets.json
 
@@ -49,9 +55,14 @@ print_tracked "Public Headers" 'include/*.hpp' 'include/*.h' 'include/*/*.hpp' '
 print_tracked "Sources" 'src/*.cpp' 'src/*.cc' 'src/*.cxx' 'src/*/*.cpp' 'src/*/*.cc' 'src/*/*.cxx'
 print_tracked "Examples" 'examples/*.cpp' 'examples/*.cc' 'examples/*.cxx' 'examples/*/*.cpp' 'examples/*/*.cc' 'examples/*/*.cxx'
 print_tracked "Tests" 'tests/*_test.cpp' 'tests/**/*_test.cpp'
-print_tracked "Documentation" 'docs/*.md'
-print_tracked "Agent Roles" '.agents/roles/*.md'
-print_tracked "Agent Templates" '.agents/templates/*.md'
+print_tracked "Agent Guidance" \
+  .agents/README.md \
+  .agents/INDEX.md \
+  .agents/CONVENTIONS.md \
+  .agents/utilities/git.md \
+  .agents/utilities/cmake.md
+print_tracked "Subagents" '.agents/subagents/*/README.md' '.agents/subagents/*/SKILL.md'
+print_tracked "Local Skills" '.agents/skills/*/README.md' '.agents/skills/*/SKILL.md'
 print_tracked "Agent Scripts" '.agents/scripts/*.sh' '.agents/scripts/README.md'
 print_tracked "Codex Guidance" '.codex/*.md'
 print_tracked "VS Code Workspace" '.vscode/*'

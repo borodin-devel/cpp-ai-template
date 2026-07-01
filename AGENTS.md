@@ -11,18 +11,18 @@ This is a C++17 project template for local, token-efficient AI-assisted developm
 For non-trivial work, read only what is relevant after this sequence:
 
 1. `README.md` for the project summary and quick start.
-2. `docs/INDEX.md` to choose the single owning document for the topic.
-3. `docs/PROJECT_LAYOUT.md` before changing paths, targets, or naming.
-4. `docs/CONVENTIONS.md` for shared rules that should not be repeated elsewhere.
-5. Topic-specific docs from `docs/INDEX.md`.
+2. `.agents/INDEX.md` to choose the single owning document for the topic.
+3. `.agents/CONVENTIONS.md` before changing paths, targets, naming, style, documentation, or agent guidance.
+4. Topic-specific files from `.agents/INDEX.md`.
 
 ## Repository Rules
 
 - Keep changes scoped to the requested behavior and respect existing uncommitted user changes.
-- Follow `docs/CONVENTIONS.md` for layout, CMake, dependency, generated-file, documentation, agent, and editor boundaries.
-- Use commands from `docs/TOOL_RULES/README.md` and validation levels from `docs/VALIDATION.md`.
-- Read `docs/DEPENDENCIES.md` before changing dependency behavior.
+- Follow `.agents/CONVENTIONS.md` for layout, CMake, dependency, generated-file, documentation, agent, and editor boundaries.
+- Use command and validation guidance from `.agents/utilities/cmake.md`, `.agents/utilities/git.md`, and `.agents/scripts/README.md`.
+- Read `.agents/utilities/cmake.md` before changing dependency behavior.
 - Use `.agents/scripts/deps.sh` when checking installed tools or dependency-provider behavior.
+- Do not modify `.agents/skills/caveman*` or `.agents/skills/cavecrew` unless the user explicitly asks for those folders.
 
 ## Codex MCP Workflow
 

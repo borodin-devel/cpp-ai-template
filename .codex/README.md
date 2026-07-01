@@ -1,6 +1,6 @@
 # Codex Rules
 
-This file is the only Codex-specific Markdown file. Keep tool-neutral project rules in `AGENTS.md` or `docs/`, and keep callable-program rules in `docs/TOOL_RULES/`.
+This file is the only Codex-specific Markdown file. Keep tool-neutral project rules in `AGENTS.md` or `.agents/`, and keep callable-program rules in `.agents/utilities/`.
 
 ## MCP Configuration
 

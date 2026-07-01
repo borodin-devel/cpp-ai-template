@@ -51,11 +51,11 @@ Run static analysis after configuring:
 
 ## Layout
 
-See `docs/INDEX.md` for documentation navigation and `docs/PROJECT_LAYOUT.md` for repository structure, target names, and naming conventions.
+See `.agents/INDEX.md` for repository guidance navigation and `.agents/CONVENTIONS.md` for repository structure, target names, naming conventions, and style.
 
 ## AI-Assisted Workflow
 
-AI-agent and editor boundaries are defined in `docs/CONVENTIONS.md`.
+AI-agent and editor boundaries are defined in `.agents/CONVENTIONS.md`. Subagent definitions live in `.agents/subagents/`.
 
 ### Serena And CocoIndex For Codex
 

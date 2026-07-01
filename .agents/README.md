@@ -1,35 +1,31 @@
-# Agent Roles
+# Agent Workspace
 
-This directory contains lightweight role cards, templates, and helper scripts for local multiagent workflows.
+This directory contains local multiagent guidance, subagent definitions, utility references, and helper scripts.
 
 ## Topic Ownership
 
 - Repository-wide rules: `AGENTS.md`.
-- Documentation navigation and search: `docs/INDEX.md`.
-- Shared layout, CMake, dependency, generated-file, editor, and documentation conventions: `docs/CONVENTIONS.md`.
-- Role sequencing and handoffs: `docs/AI_WORKFLOW.md`.
-- Commands and validation: `docs/TOOL_RULES/README.md` and `docs/VALIDATION.md`.
+- Guidance navigation and search: `.agents/INDEX.md`.
+- Shared layout, CMake, dependency, generated-file, editor, agent, and documentation conventions: `.agents/CONVENTIONS.md`.
+- Git guidance: `.agents/utilities/git.md`.
+- CMake, CTest, dependency, and validation guidance: `.agents/utilities/cmake.md`.
+- Helper scripts: `.agents/scripts/`.
+- Subagents: `.agents/subagents/`.
 
-## Roles
+## Subagents
 
-- `architect`: scope, sequencing, boundaries, and tradeoffs.
+- `architect`: planning, workflow control, sequencing, boundaries, and handoffs.
 - `developer`: focused source, test, CMake, or documentation changes.
-- `tester`: local validation, regression checks, and failure reproduction.
 - `maintainer`: build system, dependency policy, presets, packaging, and tooling.
+- `tester`: local validation, regression checks, and failure reproduction.
 - `reviewer`: correctness, maintainability, risks, and missing tests.
 - `documenter`: concise human-facing and agent-facing documentation.
 
-## Role Card Format
+Each subagent directory contains:
 
-Each role card should use this structure:
+- `README.md`: human-readable directory description.
+- `SKILL.md`: agent-facing workflow, script range, and handoff contract.
 
-```md
-# Role Name
+## Protected Skill Folders
 
-## Purpose
-## Inputs
-## Checklist
-## Handoff
-```
-
-Keep role cards short. Put reusable cross-cutting rules in the owning document from `docs/INDEX.md` instead of repeating them here.
+The caveman skill folders under `.agents/skills/` are not part of the subagent migration. They are local skills and should stay unchanged unless directly requested.

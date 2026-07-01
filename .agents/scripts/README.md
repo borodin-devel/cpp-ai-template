@@ -2,7 +2,7 @@
 
 Run scripts from anywhere inside the repository; each script resolves the repository root before executing.
 
-The canonical command catalog and failure notes live in `docs/TOOL_RULES/README.md`. Validation scope lives in `docs/VALIDATION.md`.
+Command, dependency, validation, and failure notes live in `.agents/utilities/cmake.md` and `.agents/utilities/git.md`.
 
 ## Script Groups
 
