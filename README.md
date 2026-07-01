@@ -81,7 +81,7 @@ serena --version
 cocoindex-code --help
 ```
 
-If your UV tool directory is not under `~/.local/share/uv/tools/`, update the `command` paths in `.codex/config.toml` to match:
+The checked-in Codex config uses the `serena`, `serena-hooks`, and `cocoindex-code` entrypoints from `PATH` plus repository-relative runtime paths. If Codex cannot find those commands, fix your shell `PATH` or add a local user config override instead of committing machine-specific absolute paths. Inspect the UV tool locations with:
 
 ```sh
 uv tool dir
@@ -105,7 +105,7 @@ Restart Codex if new or updated skills do not appear. For a Codex-agnostic agent
 
 #### Codex-Specific Startup
 
-The project wiring lives in `.codex/config.toml`.
+The project wiring lives in `.codex/config.toml` and is intentionally portable across clone locations.
 
 - Serena starts as `serena start-mcp-server --context codex --project-from-cwd`.
 - CocoIndex starts as `cocoindex-code serve`.

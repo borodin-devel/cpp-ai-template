@@ -29,3 +29,11 @@ Each subagent directory contains:
 ## Protected Skill Folders
 
 The caveman skill folders under `.agents/skills/` are not part of the subagent migration. They are local skills and should stay unchanged unless directly requested.
+
+## Vendored Skill Compatibility
+
+Some vendored Caveman skill README files keep upstream-relative links. This directory provides local compatibility targets so those links resolve without editing the protected skill folders.
+
+- `.agents/README.md`: local landing page for `.agents/skills/*` links back to the repository skill area.
+- `.agents/agents/`: compatibility notes for Cavecrew role links from the vendored README.
+- `.agents/docs/assets/`: compatibility assets referenced by vendored Caveman examples.

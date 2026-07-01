@@ -35,6 +35,8 @@ Run sanitizer validation:
 .agents/scripts/sanitize.sh
 ```
 
+`sanitize.sh` disables LeakSanitizer leak detection with `detect_leaks=0` so AddressSanitizer validation can run in ptrace-backed agent sandboxes. Run `cmake --preset asan`, `cmake --build --preset asan`, and `ctest --preset asan` manually outside those sandboxes when leak detection itself is the validation target.
+
 ## Modules
 
 - `cmake/ProjectOptions.cmake`: project-wide C++ defaults.

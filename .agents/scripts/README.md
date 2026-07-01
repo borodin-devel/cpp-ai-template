@@ -7,8 +7,10 @@ Command, dependency, validation, and failure notes live in `.agents/utilities/cm
 ## Script Groups
 
 - Standard checks: `check.sh`, `validate.sh`, `sanitize.sh`, `bootstrap.sh`.
-- Read-only inspection: `context.sh`, `deps.sh`, `lint.sh`.
+- Inspection and setup: `context.sh`, `deps.sh`, `lint.sh`.
 - Source modification: `format.sh`.
 - Generated-file cleanup: `clean.sh`.
+
+Inspection and setup scripts can create or update generated build state. `context.sh` and `lint.sh` may configure `build/debug`; `deps.sh` configures `build/dependency-check` and writes a temporary log under `/tmp`.
 
 Configure steps may download GoogleTest through CMake `FetchContent` when no system `GTest` package is available; classify network failures separately from project source failures.

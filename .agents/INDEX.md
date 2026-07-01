@@ -34,6 +34,11 @@ Do not modify caveman skill folders unless the user explicitly names them for mo
 
 These paths may be read as reference material when relevant.
 
+## Compatibility Targets
+
+- `.agents/agents/`: local compatibility notes for upstream-relative Cavecrew README links; not subagent definitions.
+- `.agents/docs/assets/`: local compatibility assets for upstream-relative Caveman README links.
+
 ## Search Instructions
 
 From the repository root, prefer targeted searches:
